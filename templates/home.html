@@ -1,0 +1,31 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+{% block context %}
+<!--<img src="{% static 'img/1.jpg' %}" alt="">
+<font color="red">
+hello comes from home page
+</font>
+<ul>
+{% for i in 'helllllo' %}
+<li>{{ i }}</li>
+{% endfor %}
+</ul>>
+-->
+
+
+<div class="container">
+        <form action="" method="POST" class="mt-4">
+                {% csrf_token %} {{form.as_p}}
+                <input type="submit" value="search" class="btn btn-info">
+        </form>
+
+
+{% if result %}
+        {% for r in result %}
+{{ r.student_name }}, <a href="delete-student/{{r.id}}">DELETE</a>
+        {% endfor %}
+{% endif %}
+</div>
+{% endblock %}
+
+
